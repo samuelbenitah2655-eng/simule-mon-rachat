@@ -92,11 +92,13 @@
 
   /* Premium buttons */
   .btn-hero {
-    @apply bg-gradient-to-r from-accent to-accent-hover text-accent-foreground px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg;
+    background: var(--gradient-accent);
+    @apply text-accent-foreground px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg;
   }
 
   .btn-primary {
-    @apply bg-gradient-to-r from-primary to-primary-hover text-primary-foreground px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105;
+    background: var(--gradient-primary);
+    @apply text-primary-foreground px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105;
   }
 
   /* Premium cards */

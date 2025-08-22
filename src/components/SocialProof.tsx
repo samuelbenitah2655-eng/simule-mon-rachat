@@ -56,16 +56,26 @@ const SocialProof = () => {
               >
                 <div className="text-center">
                   <div className="w-full h-[60px] flex items-center justify-center mb-2">
-                    <div className="text-muted-foreground/50 group-hover:text-muted-foreground transition-colors">
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
-                        <circle cx="12" cy="13" r="3"/>
-                      </svg>
-                    </div>
+                    {index === 0 ? (
+                      <img 
+                        src="/lovable-uploads/42628936-f000-4051-9317-876528706bfb.png" 
+                        alt="AXA"
+                        className="max-h-[60px] w-auto object-contain"
+                      />
+                    ) : (
+                      <div className="text-muted-foreground/50 group-hover:text-muted-foreground transition-colors">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                          <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+                          <circle cx="12" cy="13" r="3"/>
+                        </svg>
+                      </div>
+                    )}
                   </div>
-                  <p className="text-xs text-muted-foreground group-hover:text-foreground transition-colors">
-                    Logo {index + 1}
-                  </p>
+                  {index === 0 ? null : (
+                    <p className="text-xs text-muted-foreground group-hover:text-foreground transition-colors">
+                      Logo {index + 1}
+                    </p>
+                  )}
                 </div>
               </div>
             ))}

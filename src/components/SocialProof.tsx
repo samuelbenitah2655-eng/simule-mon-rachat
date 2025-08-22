@@ -20,10 +20,6 @@ const SocialProof = () => {
     }
   ];
 
-  const insurers = [
-    "AXA", "Allianz", "Generali", "CNP", "Crédit Agricole", "BNP", "Société Générale", "MAIF"
-  ];
-
   return (
     <section className="py-16 bg-subtle-gradient">
       <div className="container mx-auto px-4">
@@ -52,13 +48,25 @@ const SocialProof = () => {
             Partenaires assureurs et banques
           </h3>
           
-          <div className="flex flex-wrap justify-center items-center gap-6 opacity-60">
-            {insurers.map((insurer, index) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
+            {Array.from({ length: 6 }, (_, index) => (
               <div 
                 key={index}
-                className="px-4 py-2 text-sm font-medium text-muted-foreground border border-border rounded-lg"
+                className="flex items-center justify-center p-4 border-2 border-dashed border-border rounded-lg bg-muted/20 hover:bg-muted/40 transition-colors cursor-pointer group"
               >
-                {insurer}
+                <div className="text-center">
+                  <div className="w-full h-[60px] flex items-center justify-center mb-2">
+                    <div className="text-muted-foreground/50 group-hover:text-muted-foreground transition-colors">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+                        <circle cx="12" cy="13" r="3"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted-foreground group-hover:text-foreground transition-colors">
+                    Logo {index + 1}
+                  </p>
+                </div>
               </div>
             ))}
           </div>

@@ -1,12 +1,31 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Hero from "@/components/Hero";
+import MultiStepForm from "@/components/MultiStepForm";
+import SimpleSteps from "@/components/SimpleSteps";
+import SocialProof from "@/components/SocialProof";
+import ZeroCostSection from "@/components/ZeroCostSection";
+import FAQ from "@/components/FAQ";
+import UrgencySection from "@/components/UrgencySection";
+import FinalCTA from "@/components/FinalCTA";
+import Footer from "@/components/Footer";
 
 const Index = () => {
+  const scrollToForm = () => {
+    document.getElementById('simulation-form')?.scrollIntoView({ 
+      behavior: 'smooth' 
+    });
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      <Hero onScrollToForm={scrollToForm} />
+      <MultiStepForm />
+      <SimpleSteps />
+      <SocialProof />
+      <ZeroCostSection onScrollToForm={scrollToForm} />
+      <FAQ />
+      <UrgencySection />
+      <FinalCTA onScrollToForm={scrollToForm} />
+      <Footer />
     </div>
   );
 };

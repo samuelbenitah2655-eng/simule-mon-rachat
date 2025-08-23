@@ -48,35 +48,40 @@ const SocialProof = () => {
             Partenaires assureurs et banques
           </h3>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
-            {Array.from({ length: 6 }, (_, index) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {[
+              { name: "AXA", src: "/lovable-uploads/42628936-f000-4051-9317-876528706bfb.png" },
+              { name: "Allianz", src: null },
+              { name: "Generali", src: null },
+              { name: "Crédit Agricole", src: null },
+              { name: "BNP Paribas", src: null },
+              { name: "Société Générale", src: null }
+            ].map((logo, index) => (
               <div 
                 key={index}
-                className="flex items-center justify-center p-4 border-2 border-dashed border-border rounded-lg bg-muted/20 hover:bg-muted/40 transition-colors cursor-pointer group"
+                className="w-full aspect-square max-w-[140px] mx-auto bg-white rounded-2xl p-4 flex items-center justify-center"
+                style={{ 
+                  boxShadow: '0 6px 18px rgba(16, 24, 40, 0.08)',
+                  width: 'min(140px, 48vw)'
+                }}
               >
-                <div className="text-center">
-                  <div className="w-full h-[60px] flex items-center justify-center mb-2">
-                    {index === 0 ? (
-                      <img 
-                        src="/lovable-uploads/42628936-f000-4051-9317-876528706bfb.png" 
-                        alt="AXA"
-                        className="max-h-[60px] w-auto object-contain"
-                      />
-                    ) : (
-                      <div className="text-muted-foreground/50 group-hover:text-muted-foreground transition-colors">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                          <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
-                          <circle cx="12" cy="13" r="3"/>
-                        </svg>
-                      </div>
-                    )}
+                {logo.src ? (
+                  <img 
+                    src={logo.src} 
+                    alt={`Logo ${logo.name}`}
+                    className="max-w-[120px] max-h-[120px] w-auto h-auto object-contain"
+                  />
+                ) : (
+                  <div className="text-center text-muted-foreground/30">
+                    <div className="w-16 h-16 mx-auto mb-2 border-2 border-dashed border-muted-foreground/20 rounded-lg flex items-center justify-center">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+                        <circle cx="12" cy="13" r="3"/>
+                      </svg>
+                    </div>
+                    <p className="text-xs">{logo.name}</p>
                   </div>
-                  {index === 0 ? null : (
-                    <p className="text-xs text-muted-foreground group-hover:text-foreground transition-colors">
-                      Logo {index + 1}
-                    </p>
-                  )}
-                </div>
+                )}
               </div>
             ))}
           </div>

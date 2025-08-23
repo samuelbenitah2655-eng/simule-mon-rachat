@@ -51,11 +51,11 @@ const SocialProof = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {[
               { name: "AXA", src: "/lovable-uploads/42628936-f000-4051-9317-876528706bfb.png" },
-              { name: "Allianz", src: null },
-              { name: "Generali", src: null },
-              { name: "Crédit Agricole", src: null },
-              { name: "BNP Paribas", src: null },
-              { name: "Société Générale", src: null }
+              { name: "Allianz", src: "/lovable-uploads/f6ee4b88-93d7-4740-8fda-7a1815ccd3b3.png" },
+              { name: "Generali", src: "/lovable-uploads/1a3b1d7b-9674-45d3-ae85-2be5126bb528.png" },
+              { name: "Crédit Agricole", src: "/lovable-uploads/637b747c-ccde-4ea2-915e-4059101216d5.png" },
+              { name: "BNP Paribas", src: "/lovable-uploads/6fc268bc-850b-4cef-aa33-d28fd7ab1d71.png" },
+              { name: "Société Générale", src: "/lovable-uploads/13e62dcc-9bc4-48dc-94a1-bc716cd37741.png" }
             ].map((logo, index) => (
               <div 
                 key={index}

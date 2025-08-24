@@ -19,7 +19,7 @@ const Hero = ({
           Économisez jusqu'à 15 000 € sur votre assurance de prêt
         </h1>
         
-        <p className="text-subhero mb-8 max-w-3xl mx-auto text-white/90">0 € à payer — simulation gratuite en 60 secondes — sans engagement</p>
+        <p className="text-subhero mb-8 max-w-3xl mx-auto text-white/90">0 € à payer — simulation gratuite en 60 secondes — démarches simplifiées</p>
         
         <Button onClick={onScrollToForm} className="btn-hero shadow-premium">
           Je veux ma simulation gratuite

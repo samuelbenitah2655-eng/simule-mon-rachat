@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -9,7 +9,9 @@ import { useToast } from "@/hooks/use-toast";
 
 const MultiStepForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
+    uid: "",
     projectType: "",
     borrowers: "",
     loanAmount: "",
@@ -21,6 +23,63 @@ const MultiStepForm = () => {
   });
   
   const { toast } = useToast();
+
+  // Récupérer l'UID depuis l'URL au chargement du composant
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const uid = urlParams.get('uid');
+    if (uid) {
+      setFormData(prev => ({ ...prev, uid }));
+    }
+  }, []);
+
+  // Mapper les données du formulaire vers le format JSON attendu par Make.com
+  const mapFormDataToMakePayload = () => {
+    const projectTypeMapping = {
+      "principale": "Résidence principale",
+      "secondaire": "Résidence secondaire", 
+      "investissement": "Investissement locatif"
+    };
+
+    const borrowersMapping = {
+      "seul": "Moi",
+      "couple": "Moi et mon co-emprunteur"
+    };
+
+    return {
+      uid: formData.uid || "",
+      projet: projectTypeMapping[formData.projectType as keyof typeof projectTypeMapping] || formData.projectType,
+      emprunteur: borrowersMapping[formData.borrowers as keyof typeof borrowersMapping] || formData.borrowers,
+      montant_pret_initial_eur: formData.loanAmount,
+      taux_pret_pct: formData.interestRate,
+      date_debut_pret: formData.startDate,
+      duree_initiale_ans: formData.loanDuration,
+      capital_restant_du_eur: formData.remainingCapital,
+      email: formData.email,
+      submitted_at_iso8601: new Date().toISOString()
+    };
+  };
+
+  // Envoyer les données à Make.com
+  const submitToMake = async () => {
+    const payload = mapFormDataToMakePayload();
+    
+    try {
+      await fetch('https://hook.eu2.make.com/xd9w1pqkq82w4pkqgnb0d9sq80i6dtam', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        mode: 'no-cors', // Éviter les problèmes CORS
+        body: JSON.stringify(payload),
+      });
+      
+      return { success: true };
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi vers Make.com:', error);
+      return { success: false, error };
+    }
+  };
 
   const calculateRemainingCapital = () => {
     const P = parseFloat(formData.loanAmount) || 0;
@@ -52,7 +111,7 @@ const MultiStepForm = () => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!formData.email) {
       toast({
         title: "Email requis",
@@ -62,13 +121,36 @@ const MultiStepForm = () => {
       return;
     }
     
-    // Simulate form submission
-    setCurrentStep(4); // Thank you page
+    setIsSubmitting(true);
     
-    toast({
-      title: "Demande envoyée !",
-      description: "Vous recevrez votre simulation par email sous 48h",
-    });
+    try {
+      const result = await submitToMake();
+      
+      if (result.success) {
+        // Succès : passer à la page de remerciement
+        setCurrentStep(4);
+        toast({
+          title: "Demande envoyée !",
+          description: "Vous recevrez votre simulation par email sous 48h",
+        });
+      } else {
+        // Échec : rester sur l'étape 3 avec message d'erreur
+        toast({
+          title: "Erreur d'envoi",
+          description: "Impossible d'envoyer votre demande. Veuillez réessayer.",
+          variant: "destructive"
+        });
+      }
+    } catch (error) {
+      // Erreur réseau : rester sur l'étape 3 avec message d'erreur
+      toast({
+        title: "Erreur réseau",
+        description: "Problème de connexion. Veuillez vérifier votre connexion et réessayer.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const progressValue = (currentStep / 3) * 100;
@@ -269,8 +351,10 @@ const MultiStepForm = () => {
                 <Button 
                   onClick={handleSubmit} 
                   className="btn-hero flex-1"
+                  disabled={isSubmitting}
                 >
-                  <Mail className="mr-2 h-4 w-4" /> Recevoir ma simulation
+                  <Mail className="mr-2 h-4 w-4" /> 
+                  {isSubmitting ? "Envoi en cours..." : "Recevoir ma simulation"}
                 </Button>
               </div>
 

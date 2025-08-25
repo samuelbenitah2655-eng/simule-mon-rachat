@@ -11,7 +11,7 @@ const SocialProof = () => {
     rating: 5
   }, {
     name: "Sophie M.",
-    benefit: "Changement gratuit, service impeccable !",
+    benefit: "Changement fluide, service impeccable !",
     rating: 5
   }];
   return <section className="py-16 bg-subtle-gradient">

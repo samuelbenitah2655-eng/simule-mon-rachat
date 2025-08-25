@@ -1,4 +1,4 @@
-import { Shield, FileCheck, Lock } from "lucide-react";
+import { FileCheck, Lock } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -6,11 +6,6 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         {/* Compliance badges */}
         <div className="flex flex-wrap justify-center items-center gap-8 mb-8">
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <Shield className="h-5 w-5" />
-            <span className="text-sm font-medium">ORIAS 07 022 237</span>
-          </div>
-          
           <div className="flex items-center gap-2 text-muted-foreground">
             <FileCheck className="h-5 w-5" />
             <span className="text-sm font-medium">Conforme CNIL</span>
@@ -36,18 +31,12 @@ const Footer = () => {
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
               Politique de confidentialité
             </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-              CGV
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-              Contact
-            </a>
           </div>
         </div>
 
         <div className="text-center mt-8 pt-8 border-t border-border">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} - Courtier en assurances - ORIAS n°07 022 237 - 
+            © {new Date().getFullYear()} - Courtier en assurances - 
             Toute reproduction interdite
           </p>
         </div>

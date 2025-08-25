@@ -16,7 +16,7 @@ const SimpleSteps = () => {
     {
       icon: Shield,
       title: "Nous gérons tout à 100%",
-      description: "Démarches incluses si c'est intéressant"
+      description: "Toutes les démarches, si la simulation vous intéresse"
     }
   ];
 

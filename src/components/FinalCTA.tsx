@@ -19,7 +19,7 @@ const FinalCTA = ({ onScrollToForm }: FinalCTAProps) => {
         
         <Button 
           onClick={onScrollToForm}
-          className="bg-accent hover:bg-accent-hover text-accent-foreground px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:scale-105 transition-all duration-300"
+          className="bg-accent hover:bg-accent-hover text-accent-foreground px-6 py-3 text-base md:text-lg font-semibold rounded-xl shadow-lg hover:scale-105 transition-all duration-300 w-full min-w-[90%] mx-auto max-w-md"
         >
           <ArrowUp className="mr-2 h-5 w-5" />
           Oui, je veux ma simulation gratuite

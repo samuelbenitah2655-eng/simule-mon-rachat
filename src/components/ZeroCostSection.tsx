@@ -20,8 +20,8 @@ const ZeroCostSection = ({ onScrollToForm }: ZeroCostSectionProps) => {
     },
     {
       icon: Shield,
-      title: "Changement 100% gratuit",
-      description: "Démarches incluses"
+      title: "Accompagnement sur mesure",
+      description: "Vous décidez, on gère le reste"
     }
   ];
 

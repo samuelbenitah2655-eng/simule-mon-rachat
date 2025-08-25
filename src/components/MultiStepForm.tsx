@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -23,6 +23,39 @@ const MultiStepForm = () => {
   });
   
   const { toast } = useToast();
+
+  // Fonction de debounce pour le calcul automatique
+  const debounce = useCallback((func: () => void, delay: number) => {
+    let timeoutId: NodeJS.Timeout;
+    return () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(func, delay);
+    };
+  }, []);
+
+  const debouncedCalculate = useCallback(
+    debounce(() => {
+      if (
+        formData.loanAmount && 
+        parseFloat(formData.loanAmount) > 0 &&
+        formData.interestRate && 
+        parseFloat(formData.interestRate) >= 0 &&
+        formData.loanDuration && 
+        parseInt(formData.loanDuration) > 0 &&
+        formData.startDate
+      ) {
+        calculateRemainingCapital();
+      }
+    }, 300),
+    [formData.loanAmount, formData.interestRate, formData.loanDuration, formData.startDate]
+  );
+
+  // Déclencher le calcul automatique quand les champs changent
+  useEffect(() => {
+    if (currentStep === 2) {
+      debouncedCalculate();
+    }
+  }, [currentStep, debouncedCalculate]);
 
   // Récupérer l'UID depuis l'URL au chargement du composant
   useEffect(() => {
@@ -328,7 +361,7 @@ const MultiStepForm = () => {
               <h3 className="text-xl font-semibold mb-6">Vos coordonnées</h3>
               
               <div className="mb-6">
-                <Label htmlFor="email" className="text-sm font-medium">Email *</Label>
+                <Label htmlFor="email" className="text-sm font-medium">Email * (pour recevoir votre simulation)</Label>
                 <Input
                   id="email"
                   type="email"

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -10,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 const MultiStepForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef<HTMLElement>(null);
   const [formData, setFormData] = useState({
     uid: "",
     projectType: "",
@@ -134,6 +135,12 @@ const MultiStepForm = () => {
     }
   };
 
+  const scrollToFormTop = () => {
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const handleNext = () => {
     if (currentStep === 2) {
       calculateRemainingCapital();
@@ -141,7 +148,15 @@ const MultiStepForm = () => {
     
     if (currentStep < 3) {
       setCurrentStep(currentStep + 1);
+      // Scroll automatique vers le haut du formulaire sur mobile
+      setTimeout(scrollToFormTop, 100);
     }
+  };
+
+  const handleBack = (step: number) => {
+    setCurrentStep(step);
+    // Scroll automatique vers le haut du formulaire sur mobile
+    setTimeout(scrollToFormTop, 100);
   };
 
   const handleSubmit = async () => {
@@ -209,7 +224,7 @@ const MultiStepForm = () => {
   }
 
   return (
-    <section id="simulation-form" className="py-16 bg-subtle-gradient">
+    <section ref={formRef} id="simulation-form" className="py-16 bg-subtle-gradient">
       <div className="container mx-auto px-4 max-w-3xl">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold mb-4">Simulation gratuite</h2>
@@ -339,7 +354,7 @@ const MultiStepForm = () => {
               <div className="flex gap-4 mt-6">
                 <Button 
                   variant="outline" 
-                  onClick={() => setCurrentStep(1)}
+                  onClick={() => handleBack(1)}
                   className="flex-1"
                 >
                   <ArrowLeft className="mr-2 h-4 w-4" /> Retour
@@ -373,21 +388,21 @@ const MultiStepForm = () => {
                 />
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
                   variant="outline" 
-                  onClick={() => setCurrentStep(2)}
-                  className="flex-1"
+                  onClick={() => handleBack(2)}
+                  className="w-full sm:flex-1"
                 >
                   <ArrowLeft className="mr-2 h-4 w-4" /> Retour
                 </Button>
                 <Button 
                   onClick={handleSubmit} 
-                  className="btn-hero flex-1"
+                  className="btn-hero w-full sm:flex-1 text-sm sm:text-base px-3"
                   disabled={isSubmitting}
                 >
-                  <Mail className="mr-2 h-4 w-4" /> 
-                  {isSubmitting ? "Envoi en cours..." : "Recevoir ma simulation"}
+                  <Mail className="mr-2 h-4 w-4 flex-shrink-0" /> 
+                  {isSubmitting ? "Envoi..." : "Recevoir ma simulation"}
                 </Button>
               </div>
 

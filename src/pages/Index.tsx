@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Hero from "@/components/Hero";
 import MultiStepForm from "@/components/MultiStepForm";
 import SimpleSteps from "@/components/SimpleSteps";
@@ -14,6 +15,24 @@ const Index = () => {
       behavior: 'smooth' 
     });
   };
+
+  // Tracking Make webhook on page load
+  useEffect(() => {
+    const uid = new URLSearchParams(window.location.search).get('uid');
+    
+    if (uid) {
+      fetch("https://hook.eu2.make.com/p57j9aovwu4jeuu3nuuvewzgvbrpxvqh", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          event: "page_view",
+          uid,
+          clicked_at_iso8601: new Date().toISOString()
+        }),
+        mode: "no-cors"
+      }).catch(()=>{});
+    }
+  }, []);
 
   return (
     <div className="min-h-screen">

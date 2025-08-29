@@ -1,17 +1,17 @@
 import { Card } from "@/components/ui/card";
-import { FileText, Mail, Shield } from "lucide-react";
+import { MousePointer, Phone, Shield } from "lucide-react";
 
 const SimpleSteps = () => {
   const steps = [
     {
-      icon: FileText,
-      title: "Vous remplissez le formulaire",
-      description: "Simulation gratuite en 60 secondes"
+      icon: MousePointer,
+      title: "Vous demandez votre simulation",
+      description: "Un clic suffit"
     },
     {
-      icon: Mail,
-      title: "Vous recevez votre simulation",
-      description: "Par email, gratuitement et sans engagement"
+      icon: Phone,
+      title: "Un conseiller vous contacte sous 48h",
+      description: "Rappel gratuit et personnalisé"
     },
     {
       icon: Shield,

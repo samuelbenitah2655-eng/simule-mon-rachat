@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Hero from "@/components/Hero";
-import MultiStepForm from "@/components/MultiStepForm";
+import SimpleCTA from "@/components/SimpleCTA";
 import SimpleSteps from "@/components/SimpleSteps";
 import SocialProof from "@/components/SocialProof";
 import ZeroCostSection from "@/components/ZeroCostSection";
@@ -37,7 +37,7 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Hero onScrollToForm={scrollToForm} />
-      <MultiStepForm />
+      <SimpleCTA />
       <SimpleSteps />
       <SocialProof />
       <ZeroCostSection onScrollToForm={scrollToForm} />

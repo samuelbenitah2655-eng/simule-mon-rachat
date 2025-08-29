@@ -39,7 +39,7 @@ const UrgencySection = () => {
             </p>
             <div className="bg-primary/10 p-3 rounded-lg border border-primary/20">
               <p className="text-2xl font-bold text-primary mb-1">{dailyCount}</p>
-              <p className="text-sm text-primary">propriétaires ont déjà fait leur simulation aujourd’hui</p>
+              <p className="text-sm text-primary">propriétaires ont vérifié leur assurance aujourd’hui</p>
             </div>
           </Card>
         </div>

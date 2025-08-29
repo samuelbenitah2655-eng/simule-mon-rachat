@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Clock, TrendingUp } from "lucide-react";
-
 const UrgencySection = () => {
   const [dailyCount, setDailyCount] = useState(31);
-
   useEffect(() => {
     // Simulate dynamic counter
     const interval = setInterval(() => {
@@ -13,9 +11,7 @@ const UrgencySection = () => {
 
     return () => clearInterval(interval);
   }, []);
-
-  return (
-    <section className="py-16 bg-background">
+  return <section className="py-16 bg-background">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <Card className="card-premium">
@@ -48,8 +44,6 @@ const UrgencySection = () => {
           </Card>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default UrgencySection;

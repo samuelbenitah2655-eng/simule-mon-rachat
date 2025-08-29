@@ -10,8 +10,8 @@ const SimpleSteps = () => {
     },
     {
       icon: Phone,
-      title: "Un conseiller vous contacte sous 48h",
-      description: "Rappel gratuit et personnalisé"
+      title: "Un expert vous rappelle",
+      description: "Simulation claire et gratuite sous 48h"
     },
     {
       icon: Shield,

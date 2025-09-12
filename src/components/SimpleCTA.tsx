@@ -5,6 +5,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { CheckCircle } from "lucide-react";
 
+// Declare fbq for Facebook Pixel
+declare global {
+  interface Window {
+    fbq?: (...args: any[]) => void;
+  }
+}
+
 const SimpleCTA = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -101,6 +108,11 @@ const SimpleCTA = () => {
       });
 
       if (response.ok) {
+        // Trigger Facebook Pixel Lead event
+        if (typeof window.fbq !== 'undefined') {
+          window.fbq('track', 'Lead');
+        }
+        
         setIsSubmitted(true);
         // Scroll to the top of the success message
         setTimeout(() => {

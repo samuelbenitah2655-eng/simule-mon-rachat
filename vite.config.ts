@@ -1,31 +1,24 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import path from 'path'
-import { componentTagger } from 'lovable-tagger'
-
-// Config OK pour :
-// - Lovable (dev) : garde react-swc + lovable-tagger en DEV uniquement
-// - GitHub Pages (prod) : base '/', publicDir 'publique', dist + sourcemaps
 
 export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
-    mode === 'development' && componentTagger(),
+    // (optionnel) si tu veux remettre lovable-tagger plus tard :
+    // mode === 'development' && (await import('lovable-tagger')).componentTagger(),
   ].filter(Boolean),
-  base: '/',               // domaine personnalisé → assets depuis la racine
-  publicDir: 'publique',   // ton dossier statique
+  base: '/',             // domaine personnalisé → assets depuis la racine
+  publicDir: 'publique', // dossier statique
   build: {
     outDir: 'dist',
     emptyOutDir: true,
-    sourcemap: true,       // utile pour diagnostiquer une page blanche
+    sourcemap: true,
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './source'), // ✅ plus de "./src"
+      '@': path.resolve(__dirname, './source'),
     },
   },
-  server: {
-    host: '::',
-    port: 8080,
-  },
+  server: { host: '::', port: 8080 },
 }))

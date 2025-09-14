@@ -1,24 +1,22 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
-import path from 'path'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import path from "path";
+import { componentTagger } from "lovable-tagger";
 
+// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  server: {
+    host: "::",
+    port: 8080,
+  },
   plugins: [
     react(),
-    // (optionnel) si tu veux remettre lovable-tagger plus tard :
-    // mode === 'development' && (await import('lovable-tagger')).componentTagger(),
+    mode === 'development' &&
+    componentTagger(),
   ].filter(Boolean),
-  base: '/',             // domaine personnalisé → assets depuis la racine
-  publicDir: 'publique', // dossier statique
-  build: {
-    outDir: 'dist',
-    emptyOutDir: true,
-    sourcemap: true,
-  },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './source'),
+      "@": path.resolve(__dirname, "./src"),
     },
   },
-  server: { host: '::', port: 8080 },
-}))
+}));

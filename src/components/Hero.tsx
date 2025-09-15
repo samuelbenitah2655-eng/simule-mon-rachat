@@ -11,15 +11,13 @@ const Hero = ({ onScrollToForm }: HeroProps) => {
     <section className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat" style={{
       backgroundImage: `url(${heroImage})`
     }}>
-      {/* Logo Badge */}
+      {/* Logo */}
       <div className="absolute top-5 left-5 z-20">
-        <div className="inline-block bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-white/20">
-          <img 
-            src="/lovable-uploads/unnamed_4_-Photoroom.png" 
-            alt="Logo Assurance Prêt Moins Chère" 
-            className="h-44 md:h-56 w-auto object-contain rounded-full block"
-          />
-        </div>
+        <img 
+          src="/lovable-uploads/unnamed_4_-Photoroom.png" 
+          alt="Logo Assurance Prêt Moins Chère" 
+          className="h-32 md:h-40 w-auto object-contain"
+        />
       </div>
       
       {/* Overlay for better text readability */}

@@ -14,8 +14,8 @@ const Hero = ({ onScrollToForm }: HeroProps) => {
       {/* Logo */}
       <div className="absolute top-5 left-5 z-20">
         <img 
-          src="/lovable-uploads/f112ea63-6c46-438a-88a6-d8b30f12c1c5.png" 
-          alt="Logo" 
+          src="/lovable-uploads/unnamed_4_-Photoroom.png" 
+          alt="Logo Assurance Prêt Moins Chère" 
           className="h-8 md:h-10 w-auto object-contain"
         />
       </div>

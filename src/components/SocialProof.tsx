@@ -69,7 +69,11 @@ const SocialProof = () => {
             {testimonials.map((testimonial, index) => <Card key={index} className="card-premium">
                 <div className="flex flex-col items-center">
                   <Avatar className="w-20 h-20 mb-4">
-                    <AvatarImage src={testimonial.avatar} alt={`Photo de ${testimonial.name}`} />
+                    <AvatarImage 
+                      src={testimonial.avatar} 
+                      alt={`Photo de ${testimonial.name}`}
+                      className="object-cover w-full h-full"
+                    />
                     <AvatarFallback>{testimonial.name.split(' ')[0][0]}</AvatarFallback>
                   </Avatar>
                   <div className="flex justify-center mb-3">

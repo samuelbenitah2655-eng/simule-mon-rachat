@@ -11,13 +11,24 @@ const Hero = ({ onScrollToForm }: HeroProps) => {
     <section className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat" style={{
       backgroundImage: `url(${heroImage})`
     }}>
-      {/* Logo */}
+      {/* Logo Badge */}
       <div className="absolute top-5 left-5 z-20">
-        <img 
-          src="/lovable-uploads/unnamed_4_-Photoroom.png" 
-          alt="Logo Assurance Prêt Moins Chère" 
-          className="h-32 md:h-40 w-auto object-contain"
-        />
+        <div className="flex flex-col items-center">
+          {/* Logo container with white semi-transparent circle */}
+          <div className="bg-white/90 backdrop-blur-sm rounded-full p-4 shadow-lg border border-white/20">
+            <img 
+              src="/lovable-uploads/unnamed_4_-Photoroom.png" 
+              alt="Logo Assurance Prêt Moins Chère" 
+              className="h-44 md:h-56 w-auto object-contain"
+            />
+          </div>
+          {/* Trust text */}
+          <div className="mt-2 text-center">
+            <p className="text-xs text-gray-600 font-medium bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">
+              Courtier en assurances certifié ORIAS • Conforme loi Lemoine
+            </p>
+          </div>
+        </div>
       </div>
       
       {/* Overlay for better text readability */}

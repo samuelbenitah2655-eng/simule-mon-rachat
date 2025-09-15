@@ -13,11 +13,11 @@ const Hero = ({ onScrollToForm }: HeroProps) => {
     }}>
       {/* Logo Badge */}
       <div className="absolute top-5 left-5 z-20">
-        <div className="bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-white/20">
+        <div className="inline-block bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-white/20">
           <img 
             src="/lovable-uploads/unnamed_4_-Photoroom.png" 
             alt="Logo Assurance Prêt Moins Chère" 
-            className="h-44 md:h-56 w-auto object-contain rounded-full"
+            className="h-44 md:h-56 w-auto object-contain rounded-full block"
           />
         </div>
       </div>

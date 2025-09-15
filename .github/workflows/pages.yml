@@ -2,7 +2,7 @@ name: Build and Publish Vite to gh-pages
 
 on:
   push:
-    branches: ["principal"]
+    branches: ["main"]
   workflow_dispatch:
 
 jobs:

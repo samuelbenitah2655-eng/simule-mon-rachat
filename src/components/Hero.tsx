@@ -8,17 +8,29 @@ interface HeroProps {
 
 const Hero = ({ onScrollToForm }: HeroProps) => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat" style={{
-      backgroundImage: `url(${heroImage})`
-    }}>
-      {/* Logo */}
-      <div className="absolute top-5 left-5 z-20">
-        <img 
-          src="/lovable-uploads/new-logo.png" 
-          alt="Logo Assurance Prêt Moins Chère" 
-          className="h-40 md:h-52 w-auto object-contain"
-        />
-      </div>
+    <>
+      {/* Fixed Header for Mobile */}
+      <header className="fixed top-0 left-0 right-0 z-30 md:hidden bg-black/20 backdrop-blur-sm">
+        <div className="p-3">
+          <img 
+            src="/lovable-uploads/new-logo.png" 
+            alt="Logo Assurance Prêt Moins Chère" 
+            className="h-12 w-auto object-contain"
+          />
+        </div>
+      </header>
+
+      <section className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat" style={{
+        backgroundImage: `url(${heroImage})`
+      }}>
+        {/* Logo Desktop */}
+        <div className="absolute top-5 left-5 z-20 hidden md:block">
+          <img 
+            src="/lovable-uploads/new-logo.png" 
+            alt="Logo Assurance Prêt Moins Chère" 
+            className="h-52 w-auto object-contain"
+          />
+        </div>
       
       {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-black/40"></div>
@@ -37,6 +49,7 @@ const Hero = ({ onScrollToForm }: HeroProps) => {
         </Button>
       </div>
     </section>
+    </>
   );
 };
 export default Hero;

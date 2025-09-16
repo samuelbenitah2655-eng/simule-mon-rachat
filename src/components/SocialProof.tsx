@@ -72,8 +72,7 @@ const SocialProof = () => {
                     <AvatarImage 
                       src={testimonial.avatar} 
                       alt={`Photo de ${testimonial.name}`}
-                      className="object-contain w-full h-full scale-90"
-                      style={{ objectPosition: 'center top' }}
+                      className="object-cover w-full h-full"
                     />
                     <AvatarFallback>{testimonial.name.split(' ')[0][0]}</AvatarFallback>
                   </Avatar>

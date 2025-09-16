@@ -1,31 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Économisez jusqu'à 15 000 € sur votre assurance de prêt | Simulation gratuite</title>
     <meta name="description" content="Changez d'assurance de prêt immobilier gratuitement. Simulation en 60 secondes, économisez jusqu'à 15 000 €. 0 € à payer, démarches incluses." />
     <meta name="author" content="Assurance Prêt Expert" />
+    <link rel="canonical" href="https://www.simulation-assurance-pret.fr/" />
 
+    <!-- Open Graph -->
     <meta property="og:title" content="Économisez jusqu'à 15 000 € sur votre assurance de prêt" />
     <meta property="og:description" content="Simulation gratuite d'assurance de prêt en 60 secondes. Changement gratuit et sans engagement." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta property="og:url" content="https://www.simulation-assurance-pret.fr/" />
 
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@lovable_dev" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-    
+
+    <!-- Favicons / PWA -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#155E3B" />
+
     <!-- Meta Pixel Code -->
     <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e); t.async = !0; t.src = v;
+        s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+      })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', '1506304207028621');
       fbq('track', 'PageView');
     </script>
@@ -35,10 +53,13 @@
     <!-- Meta Pixel noscript fallback -->
     <noscript>
       <img height="1" width="1" style="display:none"
-           src="https://www.facebook.com/tr?id=1506304207028621&ev=PageView&noscript=1" />
+           src="https://www.facebook.com/tr?id=1506304207028621&ev=PageView&noscript=1" alt="" />
     </noscript>
-    
+
     <div id="root"></div>
+
+    <!-- Entrée Vite (dev/build) : on laisse /src/ -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+

@@ -11,12 +11,12 @@ const Hero = ({ onScrollToForm }: HeroProps) => {
     <section className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat" style={{
       backgroundImage: `url(${heroImage})`
     }}>
-      {/* Logo */}
-      <div className="absolute top-5 left-5 z-20">
+      {/* Logo - Fixed position for mobile */}
+      <div className="fixed top-3 left-3 md:top-4 md:left-4 z-20">
         <img 
           src="/lovable-uploads/new-logo.png" 
           alt="Logo Assurance Prêt Moins Chère" 
-          className="h-40 md:h-52 w-auto object-contain"
+          className="h-10 md:h-52 w-auto object-contain"
         />
       </div>
       
